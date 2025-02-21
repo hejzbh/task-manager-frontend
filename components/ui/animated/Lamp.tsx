@@ -16,7 +16,7 @@ export const LampContainer = ({
         ${className}
       `}
     >
-      <div className="absolute z-[-1] flex w-full flex-1 scale-y-[1.8] items-center justify-center isolate ">
+      <div className="absolute z-[-1] flex w-full flex-1 scale-y-[2.5] items-center justify-center isolate ">
         <motion.div
           initial={{ opacity: 0.5, width: "20rem" }}
           whileInView={{ opacity: 1, width: "35rem" }}

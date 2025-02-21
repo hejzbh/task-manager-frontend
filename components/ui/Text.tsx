@@ -15,10 +15,10 @@ export type TextProps = {
     | "4xl"
     | "5xl"
     | "6xl";
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-const Text = React.memo(
+export const Text = React.memo(
   ({ className = "", variant = "p", size = "3xl", children }: TextProps) => {
     const Element = variant;
     const sizeClasses = {
@@ -29,13 +29,16 @@ const Text = React.memo(
       xl: "text-[1.4rem] sm:text-[1.25rem] md:text-[1.75rem] lg:text-[1.3rem]",
       "2xl": "text-[1.75rem] sm:text-[1.5rem] md:text-[2rem] lg:text-[1.75rem]",
       "3xl": "text-[2rem] sm:text-[1.75rem] md:text-[2.25rem] lg:text-[2rem]",
-      "4xl": "text-[2.5rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[2.5rem]",
+      "4xl": "text-[1.4rem] sm:text-[2rem] md:text-[2.75rem] lg:text-[2.5rem]",
       "5xl": "text-[3rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3rem]",
-      "6xl": "text-[3.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]",
+      "6xl": "text-[3rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]",
     };
 
     return (
-      <Element className={`${sizeClasses[size]} ${className}`}>
+      <Element
+        style={{ lineHeight: "1.2" }}
+        className={`${sizeClasses[size]} ${className}`}
+      >
         {children}
       </Element>
     );

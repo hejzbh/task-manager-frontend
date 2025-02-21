@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 
 export const MoveUp = ({
@@ -27,3 +28,5 @@ export const MoveUp = ({
     </motion.div>
   );
 };
+
+export default MoveUp;

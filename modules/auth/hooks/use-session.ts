@@ -9,7 +9,7 @@ let refreshPromise: any = null; // Global variable for request (prevent multiple
 export async function useSession(req?: NextRequest) {
   try {
     const cookiesStore = req ? req.cookies : await cookies();
-
+    console.log(`Req: ${req?.cookies.get("accessToken")}`);
     let accessToken = cookiesStore.get("accessToken")?.value;
 
     console.log(`Access: ${accessToken}`);

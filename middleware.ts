@@ -10,7 +10,7 @@ export default async function middleware(req: NextRequest) {
 
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
-
+  console.log(`🐢🐢🦄🦄🦄 ${req.cookies.get("accessToken")}`);
   // 3) Get user session
   const session = await useSession(req);
 

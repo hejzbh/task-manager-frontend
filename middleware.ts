@@ -11,8 +11,9 @@ export default async function middleware(req: NextRequest) {
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
 
-  /**  // 3) Get user session
+  // 3) Get user session
   const session = await useSession();
+  /** 
   // 4) If route is protected but there's no session
   if (isProtectedRoute && !session) {
     // Redirect user to the login

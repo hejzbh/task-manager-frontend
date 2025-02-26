@@ -6,7 +6,7 @@ export default async function middleware(req: NextRequest) {
   // 1) GET pathname
   const { pathname } = req.nextUrl;
 
-  if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
+  //if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
 
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);

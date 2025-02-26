@@ -3,13 +3,15 @@ import { cookies } from "next/headers";
 import { getUserByToken } from "../utils/getUserByToken";
 import { axiosInstance } from "@/lib/axios";
 
-let refreshPromise: any = null; // Globalna varijabla za cache refresh requesta
+let refreshPromise: any = null; // Global variable for request (prevent multiple api calls because middleware can runs more than 5x times in 1 secodn)
 
 export async function useSession() {
   try {
     const cookiesStore = await cookies();
 
     let accessToken = cookiesStore.get("accessToken")?.value;
+
+    await axiosInstance.post("/test", { accessToken });
 
     // Handle refresh token on server
     if (!accessToken) {

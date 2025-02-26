@@ -11,7 +11,7 @@ export async function useSession() {
 
     let accessToken = cookiesStore.get("accessToken")?.value;
 
-    console.log(`✅ Access: ${accessToken}`);
+    console.log(`Access: ${accessToken}`);
 
     // Handle refresh token on server
     if (!accessToken) {

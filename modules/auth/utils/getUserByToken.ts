@@ -22,7 +22,7 @@ export const getUserByToken = async (token: string) => {
       return user;
     })
     .catch((err) => {
-      console.error(err);
+      console.log(`👿Error`, err);
       return null;
     })
     .finally(() => {

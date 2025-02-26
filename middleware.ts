@@ -4,9 +4,9 @@ import { useSession } from "./modules/auth/hooks/use-session";
 
 export default async function middleware(req: NextRequest) {
   // 1) GET pathname
-  const { pathname } = req.nextUrl;
+  /**  const { pathname } = req.nextUrl;
 
-  //if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
+  if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
 
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
@@ -26,7 +26,7 @@ export default async function middleware(req: NextRequest) {
   if (isAuthRoute && session) {
     // Redirect user to the dashboard
     return NextResponse.redirect(new URL(ROUTES.DASHBOARD, req.url));
-  }
+  } */
 
   // If everything is okay, proceed user to the page
   return NextResponse.next();

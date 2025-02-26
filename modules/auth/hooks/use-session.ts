@@ -53,6 +53,8 @@ export async function useSession() {
     }
 
     const user = await getUserByToken(accessToken);
+
+    console.log(`User: ${user}`);
     if (!user) return null;
 
     return { user, authenticated: true };

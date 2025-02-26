@@ -1,7 +1,8 @@
 import React from "react";
+import RegisterForm from "@/modules/auth/components/forms/RegisterForm";
 
-const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+const RegisterPage = async () => {
+  return <RegisterForm />;
 };
 
 export default RegisterPage;

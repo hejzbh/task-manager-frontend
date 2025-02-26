@@ -12,11 +12,11 @@ export default function Hero() {
     <LampContainer className="min-h-[100dvh] h-full">
       <Spotlight />
       <MoveUp className="text-center">
-        <Text variant="h1" size="6xl" className="font-bold">
+        <Text variant="h1" size="3xl" className="font-bold">
           Task Manager Application
         </Text>
-        <Text variant="p" size="4xl" className="mt-5">
-          Made by <Highlight>Hazim Tulumovic</Highlight>
+        <Text variant="p" size="2xl" className="mt-5">
+          Made by <Highlight className="px-3">Hazim Tulumovic</Highlight>
         </Text>
       </MoveUp>
 

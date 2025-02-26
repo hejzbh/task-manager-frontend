@@ -1,0 +1,19 @@
+@layer base {
+  /* Light theme colorss */
+  :root {
+    /* TEXT COLORS */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-label: #e2e8f0;
+    /* BG COLORS */
+  }
+
+  /* Dark theme colors */
+  :root[class~="dark"] {
+    /* TEXT COLORS */
+    --text-primary: #d2d0db;
+    --text-secondary: #b7bac4;
+    --text-label: #e2e8f0;
+    /* BG COLORS */
+  }
+}

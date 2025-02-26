@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import ROUTES from "@/constants/routes";
+import { getSession } from "./modules/auth/hooks/get-session";
 
 export default async function middleware(req: NextRequest) {
   // 1) GET pathname
@@ -9,7 +10,7 @@ export default async function middleware(req: NextRequest) {
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
 
   // 3) Get user session
-  const session = null;
+  const session = await getSession();
 
   // 4) If route is protected but there's no session
   if (isProtectedRoute && !session) {

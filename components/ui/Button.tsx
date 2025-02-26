@@ -19,7 +19,7 @@ const Button = ({
   className = "",
   children,
   variant = "secondary",
-  textProps = { size: "2xl" },
+  textProps = { size: "md" },
   href,
   dataTitle = "Click",
   onClick = () => {},

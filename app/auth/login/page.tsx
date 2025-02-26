@@ -1,12 +1,8 @@
 import React from "react";
-import Form from "@/components/forms/Form";
+import LoginForm from "@/modules/auth/components/forms/LoginForm";
 
-const LoginPage = () => {
-  return (
-    <div className="flex flex-col justify-center items-center h-full">
-      <Form title="Log into your account" />
-    </div>
-  );
+const LoginPage = async () => {
+  return <LoginForm />;
 };
 
 export default LoginPage;

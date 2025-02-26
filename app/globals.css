@@ -19,3 +19,18 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+a {
+  transition: 0.3s ease-in-out all;
+}
+
+a:hover,
+a:focus {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  a:hover {
+    opacity: 1 !important;
+  }
+}

@@ -20,14 +20,14 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 
-  /**  // 5) Check is auth route
+  // 5) Check is auth route
   const isAuthRoute = pathname.startsWith(ROUTES.AUTH);
 
   // 6) If User trying to access /auth route even he's logged in
   if (isAuthRoute && session) {
     // Redirect user to the dashboard
     return NextResponse.redirect(new URL(ROUTES.DASHBOARD, req.url));
-  }  */
+  }
 
   // If everything is okay, proceed user to the page
   return NextResponse.next();

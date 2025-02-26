@@ -4,14 +4,14 @@ import { useSession } from "./modules/auth/hooks/use-session";
 
 export default async function middleware(req: NextRequest) {
   // 1) GET pathname
-  /**  const { pathname } = req.nextUrl;
+  const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
 
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
 
-  // 3) Get user session
+  /**  // 3) Get user session
   const session = await useSession();
   // 4) If route is protected but there's no session
   if (isProtectedRoute && !session) {

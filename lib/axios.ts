@@ -1,3 +1,4 @@
+import ROUTES from "@/constants/routes";
 import axios from "axios";
 import cookies from "js-cookie";
 
@@ -61,6 +62,8 @@ axiosInstance.interceptors.response.use(
         console.error("Token refresh failed:", refreshError);
         cookies.remove("accessToken");
         cookies.remove("refreshToken");
+
+        window.location.href = ROUTES.LOGIN;
 
         return Promise.reject(refreshError);
       }

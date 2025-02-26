@@ -15,7 +15,6 @@ export async function useSession() {
 
     // Handle refresh token on server
     if (!accessToken) {
-      console.log("nema accesa");
       const refreshToken = cookiesStore.get("refreshToken")?.value;
       if (!refreshToken) return null;
       console.log("ima refresh");

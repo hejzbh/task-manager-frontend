@@ -12,7 +12,7 @@ export default async function middleware(req: NextRequest) {
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
 
   // 3) Get user session
-  const session = await useSession();
+  const session = await useSession(req);
 
   // 4) If route is protected but there's no session
   if (isProtectedRoute && !session) {

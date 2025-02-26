@@ -1,3 +1,4 @@
+"use server";
 import { cookies } from "next/headers";
 import { getUserByToken } from "../utils/getUserByToken";
 import { axiosInstance } from "@/lib/axios";

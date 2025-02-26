@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://task-manager-backend-1a7l.onrender.com/:path*"
+      "destination": "https://task-manager-backend-1a7l.onrender.com/api/v1/:path*"
     }
   ]
 }

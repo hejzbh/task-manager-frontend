@@ -12,7 +12,7 @@ export async function useSession() {
     let accessToken = cookiesStore.get("accessToken")?.value;
 
     console.log("hahaha");
-    await axiosInstance.post("/test", { accessToken });
+    console.log(accessToken);
 
     // Handle refresh token on server
     if (!accessToken) {

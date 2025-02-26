@@ -1,17 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import ROUTES from "@/constants/routes";
-import { getSession } from "./modules/auth/hooks/get-session";
+import { useSession } from "./modules/auth/hooks/use-session";
 
 export default async function middleware(req: NextRequest) {
   // 1) GET pathname
   const { pathname } = req.nextUrl;
 
+  if (pathname.startsWith("/_next")) return NextResponse.next(); // Cached
+
   // 2) Check is it protected route
   const isProtectedRoute = pathname.startsWith(ROUTES.DASHBOARD);
 
   // 3) Get user session
-  const session = await getSession();
-
+  const session = await useSession();
   // 4) If route is protected but there's no session
   if (isProtectedRoute && !session) {
     // Redirect user to the login
@@ -30,3 +31,7 @@ export default async function middleware(req: NextRequest) {
   // If everything is okay, proceed user to the page
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};

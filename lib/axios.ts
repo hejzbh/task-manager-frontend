@@ -11,10 +11,8 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (request) => {
-    console.log(request);
     if (request.url?.includes("auth")) return request;
 
-    console.log("✅✅✅✅");
     const accessToken = cookies.get("accessToken");
     if (accessToken) {
       request.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -41,7 +39,7 @@ axiosInstance.interceptors.response.use(
       try {
         // Make a request to your auth server to refresh the token.
         const response = await axios.post(
-          "test",
+          process.env.API_REFRESH_TOKEN_URL!,
           {},
           { withCredentials: true }
         );
@@ -51,7 +49,7 @@ axiosInstance.interceptors.response.use(
 
         axiosInstance.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${accessToken}`;
+        ] = `Bearer ${accessToken?.value}`;
 
         return axiosInstance(originalRequest);
       } catch (refreshError) {
@@ -59,7 +57,7 @@ axiosInstance.interceptors.response.use(
         console.error("Token refresh failed:", refreshError);
         cookies.remove("accessToken");
         cookies.remove("refreshToken");
-        // window.location.href = "/login";s
+
         return Promise.reject(refreshError);
       }
     }

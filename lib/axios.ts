@@ -14,9 +14,7 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (request) => {
-    if (request.url?.includes("auth")) return request;
-
+  async (request) => {
     const accessToken = cookies.get("accessToken");
     if (accessToken) {
       request.headers["Authorization"] = `Bearer ${accessToken}`;

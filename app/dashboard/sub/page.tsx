@@ -1,3 +1,4 @@
+"use client";
 import { axiosInstance } from "@/lib/axios";
 import React from "react";
 
@@ -8,7 +9,7 @@ const page = () => {
 
   return (
     <div>
-      <button>Fetch somethign</button>
+      <button onClick={getData}>Fetch somethign</button>
     </div>
   );
 };

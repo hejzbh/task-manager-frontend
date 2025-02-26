@@ -10,11 +10,11 @@ export async function useSession() {
 
     let accessToken = cookiesStore.get("accessToken")?.value;
 
+    // Handle refresh token on server
     if (!accessToken) {
       const refreshToken = cookiesStore.get("refreshToken")?.value;
       if (!refreshToken) return null;
 
-      // Ako je refresh već u toku, čekaj da se završi
       if (!refreshPromise) {
         refreshPromise = axiosInstance
           .post("/auth/refresh", { refreshToken })
@@ -35,17 +35,17 @@ export async function useSession() {
               newRefreshToken.options
             );
 
-            return newAccessToken?.value; // Vraća novi token
+            return newAccessToken?.value;
           })
           .catch(() => null)
           .finally(() => {
-            refreshPromise = null; // Resetujemo nakon završetka
+            refreshPromise = null; // reset
           });
       }
 
-      // Čekaj da refreshPromise završi i uzmi rezultat
+      // wait until its done
       accessToken = await refreshPromise;
-      if (!accessToken) return null; // Ako refresh nije uspio, vraćamo null
+      if (!accessToken) return null;
     }
 
     const user = await getUserByToken(accessToken);

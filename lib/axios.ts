@@ -24,6 +24,7 @@ axiosInstance.interceptors.request.use(
   }
 );
 
+// HANDLE ACCESS EXPIRATION ON CLIENT
 axiosInstance.interceptors.response.use(
   (response) => response, // Directly return successful responses.
   async (error) => {
@@ -39,7 +40,7 @@ axiosInstance.interceptors.response.use(
       try {
         // Make a request to your auth server to refresh the token.
         const response = await axios.post(
-          process.env.API_REFRESH_TOKEN_URL!,
+          process.env.NEXT_PUBLIC_API_URL + "/auth/refresh",
           {},
           { withCredentials: true }
         );

@@ -1,7 +1,7 @@
 "use client";
 import { Highlight } from "@/components/ui/animated/Highlight";
 import { MoveUp } from "@/components/ui/animated/MoveUp";
-import { Spotlight } from "@/components/Spotlight";
+import { Spotlight } from "@/components/ui/animated/Spotlight";
 import Text from "@/components/ui/Text";
 import { LampContainer } from "@/components/ui/animated/Lamp";
 import Button from "@/components/ui/Button";

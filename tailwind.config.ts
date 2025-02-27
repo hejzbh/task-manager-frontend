@@ -15,6 +15,10 @@ export default {
           label: "#E2E8F0",
           link: "#338FD1",
         },
+        bgColors: {
+          header: "#252630",
+          sidebar: "#1E1F27",
+        },
         error: "#DC2626",
         success: "green",
       },

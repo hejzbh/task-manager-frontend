@@ -34,11 +34,15 @@ const LoginForm = () => {
       const response = await axiosInstance
         .post(`/auth/login`, data)
         .catch((res) => {
-          throw new Error(res.response.data.error);
+          throw new Error(res.response.data.error); // custom error from backend
         });
 
       if (response?.data?.data?.user) {
         console.log("redirecting");
+        showToast({
+          message: "Welcome to the application",
+          variant: "success",
+        });
         router.push("/dashboard");
       }
       // 3)

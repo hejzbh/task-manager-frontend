@@ -1,18 +1,18 @@
 "use server";
 import { axiosInstance } from "@/lib/axios";
+import { CurrentUserType } from "@/types/auth.types";
 
 const cache = new Map();
-let userPromise: Promise<any> | null = null;
+let userPromise: Promise<CurrentUserType> | null = null;
 
-export const getUserByToken = async (token: string) => {
-  console.log(`Token : ${token}`);
+export const getUserByToken = async (
+  token: string
+): Promise<CurrentUserType | null> => {
   if (!token) return null;
 
-  console.log(`UserPromise : ${userPromise !== null}`);
   if (userPromise) return userPromise;
 
   const cachedUser = cache.get(token);
-  console.log(`CachedUser : ${cachedUser}`);
 
   if (cachedUser) return cachedUser;
 

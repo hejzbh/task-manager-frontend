@@ -4,10 +4,10 @@ import Image from "next/image";
 import ROUTES from "@/constants/routes";
 import Text from "./Text";
 
-const Logo = ({ className = "" }: { className: string }) => {
+const Logo = ({ className = "" }: { className?: string }) => {
   return (
     <Link
-      href={ROUTES.DASHBOARD}
+      href={ROUTES.HOME}
       title="Go to home"
       className={`flex items-center space-x-3 active:opacity-70 ${className}`}
     >
@@ -15,8 +15,8 @@ const Logo = ({ className = "" }: { className: string }) => {
         loading="lazy"
         src={"/images/logo.webp"}
         alt="Logo"
-        width={50}
-        height={70}
+        width={25}
+        height={25}
       />
       <Text className="font-semibold">{process.env.NEXT_PUBLIC_SITENAME}</Text>
     </Link>

@@ -2,17 +2,14 @@
 import { cookies } from "next/headers";
 import { getUserByToken } from "../utils/getUserByToken";
 import { axiosInstance } from "@/lib/axios";
-import { NextRequest } from "next/server";
 
 let refreshPromise: any = null; // Global variable for request (prevent multiple api calls because middleware can runs more than 5x times in 1 secodn)
 
-export async function useSession(req?: NextRequest) {
+export async function useSession() {
   try {
     const cookiesStore = await cookies();
-    console.log(`Req: ${req?.cookies.get("accessToken")?.value}`);
-    let accessToken = cookiesStore.get("accessToken")?.value;
 
-    console.log(`Access: ${accessToken}`);
+    let accessToken = cookiesStore.get("accessToken")?.value;
 
     // Handle refresh token on server
     if (!accessToken) {
@@ -54,7 +51,6 @@ export async function useSession(req?: NextRequest) {
 
     const user = await getUserByToken(accessToken);
 
-    console.log(`User: ${user}`);
     if (!user) return null;
 
     return { user, authenticated: true };

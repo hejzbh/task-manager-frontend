@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ToastsProvider from "@/components/providers/ToastsProvider";
+import ModalProvider from "@/components/providers/ModalProvider";
 
 const poppins = Poppins({
   subsets: ["latin", "latin-ext"],
@@ -24,6 +25,7 @@ export default function RootLayout({
         {children}
 
         <ToastsProvider />
+        <ModalProvider />
       </body>
     </html>
   );

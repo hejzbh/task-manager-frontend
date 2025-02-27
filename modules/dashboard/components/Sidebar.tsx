@@ -1,7 +1,7 @@
 import React from "react";
 import SidebarLinks from "./SidebarLinks";
 import Separator from "@/components/ui/Separator";
-import Shortcut from "@/components/ui/Shortcut";
+import CreateTaskButton from "@/modules/tasks/components/CreateTaskButton";
 
 interface SidebarProps {
   className?: string;
@@ -14,7 +14,10 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
     >
       <SidebarLinks />
       <Separator />
-      <Shortcut keys={["CTRL", "D"]} />
+      <CreateTaskButton
+        includeShortcut
+        className="flex flex-col-reverse w-full justify-center items-center"
+      />
     </aside>
   );
 };

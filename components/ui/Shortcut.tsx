@@ -32,10 +32,10 @@ const Shortcut = ({
 
   return (
     <kbd
-      className={`hidden md:inline-flex bg-black/20 text-white pointer-events-none  h-5 select-none items-center gap-1 rounded  px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto ${className}`}
+      className={`hidden md:inline-flex bg-black/20 text-white pointer-events-none  h-5 select-none items-center gap-1 rounded  px-1.5 font-mono text-[10px] font-medium text-muted-foreground  ${className}`}
     >
-      <span className="text-xs">
-        {keys[0]}+{keys[1]?.toUpperCase()}
+      <span className="text-sm">
+        {keys[0]} + {keys[1]?.toUpperCase()}
       </span>
     </kbd>
   );

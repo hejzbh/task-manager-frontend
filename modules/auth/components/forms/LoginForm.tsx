@@ -43,7 +43,7 @@ const LoginForm = () => {
           message: "Welcome to the application",
           variant: "success",
         });
-        router.push("/dashboard");
+        router.push(ROUTES.DASHBOARD);
       }
       // 3)
     } catch (err: any) {
@@ -62,6 +62,8 @@ const LoginForm = () => {
       fields={authFormFields}
       onSubmit={login}
       className="lg:min-w-[550px]"
+      formClassName="bg-[#4D388D]"
+      fieldClassName="!text-white !bg-[unset]"
     >
       <Text>
         Don't have an account?{" "}

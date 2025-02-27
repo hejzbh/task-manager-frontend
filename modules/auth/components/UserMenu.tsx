@@ -14,6 +14,7 @@ const UserMenu = ({ className = "" }: UserMenuProps) => {
 
   const user = useCurrentUser();
 
+  console.log(user);
   if (!user) return null;
 
   return (

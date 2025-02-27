@@ -15,7 +15,7 @@ export async function useSession() {
     if (!accessToken) {
       const refreshToken = cookiesStore.get("refreshToken")?.value;
       if (!refreshToken) return null;
-      console.log("ima refresh");
+
       if (!refreshPromise) {
         refreshPromise = axiosInstance
           .post("/auth/refresh", { refreshToken })

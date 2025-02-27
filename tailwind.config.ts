@@ -18,6 +18,7 @@ export default {
         bgColors: {
           header: "#252630",
           sidebar: "#1E1F27",
+          modal: "#000000",
         },
         error: "#DC2626",
         success: "green",

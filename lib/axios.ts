@@ -12,10 +12,13 @@ export const axiosInstance = axios.create({
     "Content-Type": "application/json",
   },
 });
+/*
 
 axiosInstance.interceptors.request.use(
   async (request) => {
     const accessToken = cookies.get("accessToken");
+    console.log(accessToken);
+    console.log("✅✅✅");
     if (accessToken) {
       request.headers["Authorization"] = `Bearer ${accessToken}`;
     }
@@ -25,6 +28,7 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+*/
 
 // HANDLE ACCESS EXPIRATION ON CLIENT
 axiosInstance.interceptors.response.use(
@@ -41,11 +45,8 @@ axiosInstance.interceptors.response.use(
 
       try {
         // Make a request to your auth server to refresh the token.
-        const response = await axios.post(
-          process.env.NEXT_PUBLIC_API_URL + "/auth/refresh",
-          {},
-          { withCredentials: true }
-        );
+
+        const response = await axiosInstance.post("/auth/refresh");
         const { accessToken } = response.data?.data;
 
         if (!accessToken) throw new Error("Canot generate access token");

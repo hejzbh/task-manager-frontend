@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         {/** Main */}
         <div className="flex h-full">
           <Sidebar />
-          <main className="p-5">{children}</main>
+          <main className="p-5 w-full overflow-y-scroll">{children}</main>
         </div>
       </div>
     </CurrentUserProvider>

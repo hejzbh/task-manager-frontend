@@ -6,6 +6,9 @@ import Text from "@/components/ui/Text";
 import Link from "next/link";
 import ROUTES from "@/constants/routes";
 import { authFormFields } from "../../constants/authFields";
+import { useToasts } from "@/hooks/use-toasts";
+import { axiosInstance } from "@/lib/axios";
+import { useRouter } from "next/navigation";
 
 const registerSchema = z.object({
   email: z
@@ -19,14 +22,47 @@ const registerSchema = z.object({
 });
 
 const RegisterForm = () => {
-  async function register() {}
+  const { showToast } = useToasts();
+  const router = useRouter();
 
+  async function register(data: { email: string; password: string }) {
+    try {
+      // 1) If data is not defined (Impossible, but nice to have check.)
+      if (!data?.email || !data.password) return;
+
+      // 2) Register request
+      const response = await axiosInstance
+        .post(`/auth/register`, data)
+        .catch((res) => {
+          throw new Error(res.response.data.error); // custom error from backend
+        });
+
+      if (response?.data?.success) {
+        showToast({
+          message:
+            response?.data?.message ||
+            "You've successfully created account. Log in.",
+          variant: "success",
+        });
+        router.push(ROUTES.LOGIN);
+      }
+      // 3)
+    } catch (err: any) {
+      // Show error message
+      showToast({
+        message: err.message,
+        variant: "error",
+      });
+    }
+  }
   return (
     <Form
       title="Create your account"
       schema={registerSchema}
       fields={authFormFields}
       className="lg:min-w-[550px]"
+      formClassName="bg-[#4D388D]"
+      fieldClassName="!text-white !bg-[unset]"
       onSubmit={register}
     >
       <Text>

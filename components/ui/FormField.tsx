@@ -23,14 +23,15 @@ const FormField = React.memo(
     required,
     register,
     errorMsg,
+    options = [],
   }: FormFieldProps) => {
     const commonProps = useMemo(
       () => ({
         id: name,
         placeholder,
-        className: `w-full rounded-lg text-sm border p-2 text-gray-900 outline-none resize-none ${
-          errorMsg ? "border-red-500" : "border-gray-300"
-        }`,
+        className: `w-full rounded-lg text-sm border p-3  text-[#FFFCF2] bg-[#27272A] outline-none resize-none ${
+          errorMsg ? "border-error" : "border-gray-600"
+        } ${className}`,
         "aria-describedby": errorMsg ? `${name}-error` : undefined,
         ...register(name, { required }),
       }),
@@ -55,8 +56,11 @@ const FormField = React.memo(
         {/** Select */}
         {variant === "select" && (
           <select {...commonProps}>
-            <option value="">Select an option</option>
-            {/* Dynamically pass options if needed */}
+            {options?.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         )}
 

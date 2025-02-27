@@ -3,6 +3,7 @@ export type FormFieldType = {
   label: string;
   placeholder?: string;
   required?: boolean;
-  variant: "input" | "textarea" | "select";
-  inputType?: "email" | "password" | "text";
+  variant: "input" | "textarea" | "select" | "date-picker";
+  inputType?: "email" | "password" | "text" | "date";
+  options?: string[];
 };

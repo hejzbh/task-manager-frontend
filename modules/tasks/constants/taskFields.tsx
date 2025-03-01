@@ -18,7 +18,7 @@ export const taskFormFields: FormFieldType[] = [
     name: "status",
     label: "Status",
     variant: "select",
-    options: [TaskStatus.COMPLETED, TaskStatus.IN_PROGRESS, TaskStatus.PENDING],
+    options: [TaskStatus.PENDING, TaskStatus.IN_PROGRESS, TaskStatus.COMPLETED],
   },
   {
     name: "priority",

@@ -19,15 +19,14 @@ export const getUserByToken = async (
   userPromise = axiosInstance
     .get("/auth/profile", { headers: { Authorization: `Bearer ${token}` } })
     .then((response) => {
-      console.log(`✅✅✅ ${response.data.data} Uspjesno!!`);
       const { user } = response?.data?.data || {};
+
       if (!user) throw new Error("User not found");
 
       cache.set(token, user);
       return user;
     })
-    .catch((err) => {
-      console.log(`👿Error`, err);
+    .catch(() => {
       return null;
     })
     .finally(() => {

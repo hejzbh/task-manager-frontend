@@ -12,23 +12,6 @@ export const axiosInstance = axios.create({
     "Content-Type": "application/json",
   },
 });
-/*
-
-axiosInstance.interceptors.request.use(
-  async (request) => {
-    const accessToken = cookies.get("accessToken");
-    console.log(accessToken);
-    console.log("✅✅✅");
-    if (accessToken) {
-      request.headers["Authorization"] = `Bearer ${accessToken}`;
-    }
-    return request;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-*/
 
 // HANDLE ACCESS EXPIRATION ON CLIENT
 axiosInstance.interceptors.response.use(
@@ -62,7 +45,7 @@ axiosInstance.interceptors.response.use(
         cookies.remove("accessToken");
         cookies.remove("refreshToken");
 
-        window.location.href = ROUTES.LOGIN;
+        // window.location.href = ROUTES.LOGIN;
 
         return Promise.reject(refreshError);
       }

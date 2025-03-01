@@ -10,13 +10,20 @@ export enum TaskStatus {
   COMPLETED = "COMPLETED",
 }
 
+export const TASK_STATUSES = [
+  TaskStatus.PENDING,
+  TaskStatus.IN_PROGRESS,
+  TaskStatus.COMPLETED,
+];
+
 export type Task = {
+  _id: string;
   title: string;
   description: string;
-  status: string;
-  priority: string;
+  status: TaskStatus;
+  priority: TaskPriority;
   dueDate: string;
   createdAt: string;
 };
 
-export type TaskFormData = Omit<Task, "createdAt">;
+export type TaskFormData = Omit<Task, "_id" | "createdAt">;

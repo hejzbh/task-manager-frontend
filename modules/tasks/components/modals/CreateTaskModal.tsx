@@ -2,22 +2,37 @@
 import React from "react";
 import Text from "@/components/ui/Text";
 import Separator from "@/components/ui/Separator";
-import { createTaskSchema } from "../constants/task.schema";
+import { createTaskSchema } from "../../constants/task.schema";
 import Form from "@/components/forms/Form";
-import { taskFormFields } from "../constants/taskFields";
+import { taskFormFields } from "../../constants/taskFields";
 import { TaskFormData } from "@/types/task.types";
 import { useToasts } from "@/hooks/use-toasts";
 import { axiosInstance } from "@/lib/axios";
+import { useRouter } from "next/navigation";
+import { useModal } from "@/hooks/use-modal";
+import { createTask } from "../../actions/createTask";
 
 const CreateTaskModal = () => {
   const { showToast } = useToasts();
+  const { closeModal } = useModal();
+  const router = useRouter();
 
-  async function createTask(taskData: TaskFormData) {
+  async function onSubmit(taskData: TaskFormData) {
     if (!taskData) return;
 
     try {
-      // 1) Make api request
-      const response = await axiosInstance.post(`/tasks`, taskData);
+      // 1) Create task
+      await createTask(taskData);
+
+      // 2) Refresh
+      router.refresh();
+
+      // 3) Show success msg & close modal
+      showToast({
+        message: "You've successfully created a new task",
+        variant: "success",
+      });
+      closeModal();
     } catch (err: any) {
       showToast({
         variant: "error",
@@ -33,7 +48,7 @@ const CreateTaskModal = () => {
       <Form
         fields={taskFormFields}
         schema={createTaskSchema}
-        onSubmit={createTask}
+        onSubmit={onSubmit}
         formClassName="!p-0"
       />
     </div>

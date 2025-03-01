@@ -38,7 +38,6 @@ const LoginForm = () => {
         });
 
       if (response?.data?.data?.user) {
-        console.log("redirecting");
         showToast({
           message: "Welcome to the application",
           variant: "success",

@@ -19,6 +19,7 @@ export default {
           header: "#252630",
           sidebar: "#1E1F27",
           modal: "#000000",
+          task: "#22272B",
         },
         error: "#DC2626",
         success: "green",
